@@ -15,8 +15,8 @@ $(document).ready(function() {
         let bb = row.find('#bb_input').val();
         let lk = row.find('#lk_input').val();
         let model = row.find('select').val();
-        // bb = 'O=Cc1cc(C=O)cc(C=O)c1';
-        // lk = 'N[C@H]1CCCC[C@@H]1N';
+        bb = 'O=Cc1cc(C=O)cc(C=O)c1';
+        lk = 'N[C@H]1CCCC[C@@H]1N';
         console.log(bb, lk, model);
         let formData = new FormData();
         formData.append('bb', bb);
