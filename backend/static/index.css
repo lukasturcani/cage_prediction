@@ -18,7 +18,7 @@ div {
 }
 
 #header {
-    background-color: orange;
+    /*background-color: orange;*/
     height: 5%;
     width: 100%;
 }
@@ -27,7 +27,7 @@ div {
     width: 20%;
 }
 
-h1 {
+h1, h2 {
     text-align: center;
 }
 
@@ -51,21 +51,21 @@ button {
 }
 
 .a {
-    background-color: blue;
+    /*background-color: blue;*/
 }
 
 .b {
-    background-color: red;
+    /*background-color: red;*/
 }
 
 .c {
-    background-color: green;
+    /*background-color: green;*/
 }
 
 .d {
-    background-color: yellow;
+    /*background-color: yellow;*/
 }
 
 .e {
-    background-color: gray;
+    /*background-color: gray;*/
 }
