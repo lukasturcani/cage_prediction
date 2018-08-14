@@ -33,11 +33,6 @@ def fingerprint():
     return [bb_count_fingerprint((bb, lk), 512, 8)]
 
 
-def predict(model_name):
-    ans = current_app.models[model_name].predict(fingerprint())
-    return str(ans[0])
-
-
 def load_models():
     models = {}
     for model_path in iglob('backend/models/*.pkl'):
@@ -47,18 +42,21 @@ def load_models():
     return models
 
 
-def create_app():
-    app = Flask(__name__, instance_relative_config=True)
+app = Flask(__name__, instance_relative_config=True)
+app.models = load_models()
 
-    if not os.path.exists(app.instance_path):
-        os.mkdir(app.instance_path)
 
-    app.models = load_models()
+@app.route('/')
+def root():
+    return redirect(url_for('static', filename='index.html'))
 
-    @app.route('/')
-    def root():
-        return redirect(url_for('static', filename='index.html'))
 
-    app.route('/predict/<model_name>', methods=['POST'])(predict)
+@app.route('/predict/<model_name>', methods=['POST'])
+def predict(model_name):
+    ans = current_app.models[model_name].predict(fingerprint())
+    return str(ans[0])
 
-    return app
+
+if __name__ == '__main__':
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)

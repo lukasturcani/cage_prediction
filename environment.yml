@@ -1,0 +1,12 @@
+name: cageprediction
+channels:
+  - rdkit
+  - anaconda
+  - defaults
+dependencies:
+  - flask=0.12.2=py36hb24657c_0
+  - flask-cors=3.0.3=py36h2d857d3_0
+  - rdkit=2018.03.1.0=py36h6bb024c_1
+  - pip:
+    - sklearn==0.0
+
