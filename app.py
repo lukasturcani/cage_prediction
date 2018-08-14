@@ -35,7 +35,7 @@ def fingerprint():
 
 def load_models():
     models = {}
-    for model_path in iglob('backend/models/*.pkl'):
+    for model_path in iglob('models/*.pkl'):
         name, _ = os.path.splitext(os.path.basename(model_path))
         with open(model_path, 'rb') as f:
             models[name] = pickle.load(f)
