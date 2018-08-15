@@ -9,4 +9,4 @@ dependencies:
   - rdkit=2018.03.1.0=py36h6bb024c_1
   - pip:
     - sklearn==0.0
-
+    - gunicorn==19.7.1
