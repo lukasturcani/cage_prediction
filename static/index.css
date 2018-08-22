@@ -23,6 +23,7 @@ div {
     /*background-color: orange;*/
     height: 5%;
     width: 100%;
+    margin-top: 1em;
 }
 
 .row_box {
@@ -34,8 +35,36 @@ h1, h2 {
     text-align: center;
 }
 
+.title {
+    font-size: 3em;
+}
+
 .row {
     height: 5%;
+}
+
+.intro {
+    width: initial;
+    height: initial;
+    display: inline-block;
+}
+
+.intro_p {
+    text-align: center;
+}
+
+.inner_fdiv {
+    width: 25%;
+}
+
+img {
+    max-width: 100%;
+}
+
+
+p {
+    font-size: 1em;
+    text-align: left;
 }
 
 input {
