@@ -38,28 +38,38 @@
                   trained on cages generated with alkyne linkers and alkyne building blocks.
                   The "aldehyde2 amine3" model is trained on cages generated
                   with aldehyde linkers and amine building blocks, and so on.
-                  All models assume the cage has a tetraheral,
-                  Tri<sup>4</sup>Di<sup>6</sup>, topology.
+                  All models assume the cage has a tetrahedral,
+                  Tri<sup>4</sup>Di<sup>6</sup>, topology from a [4+6]
+                  reaction.
                   For the most accurate predictions, the model should match
-                  your own linkers and building blocks.
+                  your own linkers and building blocks. In cases of faulty
+                  SMILES the model will still provide an answer.
               </p>
               <br />
               <p>
                   The database holding the cages used for training is
                   available at DOI: <a href="https://doi.org/10.14469/hpc/4618">10.14469/hpc/4618</a>.
               </p>
+              <br />
+              <p>
+                  An example amine2 aldehyde3 shape persistent cage
+                  is CC3, which has the
+                  linker SMILES of "N[C@H]1CCCC[C@@H]1N" and building block SMILES of
+                  "O=Cc1cc(C=O)cc(C=O)c1". An example of a collapsed cage can be seen
+                  using the linker "NCCCCCCN" and building block "O=Cc1cc(C=O)cc(C=O)c1".
+              </p>
 
               <div class="fdiv">
                   <div class="inner_fdiv">
                       <figure>
                           <img src="cavity.png" />
-                          <figcaption>A shape persistent cage with cavity highlighted in red.</figcaption>
+                          <figcaption>CC3, a shape persistent cage with cavity highlighted in red.</figcaption>
                       </figure>
                   </div>
                   <div class="inner_fdiv">
                       <figure>
                           <img src="collapsed.png" />
-                          <figcaption>A collapsed cage.</figcaption>
+                          <figcaption>A collapsed cage lacking a central cavity.</figcaption>
                       </figure>
                   </div>
               </div>
