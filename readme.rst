@@ -10,46 +10,51 @@ shown in the paper, go through the following steps:
 1. Download the database of organic cages from
    https://doi.org/10.14469/hpc/4618. The cages are divided among
    multiple ``stk`` ``.json`` population dump files, one
-   for each generating reaction. In addition, the SQL database used to
-   get the results show in the paper is also included in
+   for each reaction. In addition, the SQL database used to
+   get the results show in the paper is stored in
    ``cage_prediction.db``.
 2. Extract the downloaded archive, ``cages.tar.gz``. For example,
    using ``tar -xzf cages.tar.gz``. This will extract the ``cages``
-   folder holding the ``.json`` files and the SQL database.
+   folder, which holds the ``.json`` files and the SQL database.
 3. Train the desired models. Please note that every training script has
-   a usage statement which can be seen by running:
-   ``python path_to_train_script --help``, for example
-   ``python train_scripts/collapse_prediction/random_forest.py --help``.
+   a usage statement which can be seen by running::
+
+       python path_to_train_script.py --help
+
+   for example::
+
+       python train_scripts/collapse_prediction/random_forest.py --help
+
    Also note that in the commands below ``path/to/cage_prediction.db``
    should be replaced by the path to the file ``cage_prediction.db``
    on your computer.
 
    The script ``collapse_prediction/random_forest.py`` can be used to
-   regenerate the results from Table 2 in the paper:
+   regenerate the results from Table 2 in the paper::
 
-   ``python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db -r 1 2 3 4 5 6 -t 1``
+       python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db -r 1 2 3 4 5 6 -t 1
 
    The numbers after ``-r`` and ``-t`` indicate which reactions and
    topologies you wish to see the results for. By adding or removing
    numbers you can see the results for different rows of Table 2. To
-   see which number corresponds to which reaction or topology run:
+   see which number corresponds to which reaction or topology run::
 
-   ``python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db --help ``
+       python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db --help
 
    The script ``collapse_prediction/random_forest.py`` is also used to
-   calculate the results for the cross-topology model with
+   calculate the results for the cross-topology model with::
 
-   ``python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db -r 1 2 8 9 10 11 12 -t 1 2 3 4 5 --join``
+       python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db -r 1 2 8 9 10 11 12 -t 1 2 3 4 5 --join
 
    The script ``collapse_prediction/cross_reaction.py`` is used to
    get the results shown in Tables 3 and 4. To get the results for
-   Table 3:
+   Table 3::
 
-   ``python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db train 1 2 3 4 5 6``
+       python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db train 1 2 3 4 5 6
 
-   and for Table 4:
+   and for Table 4::
 
-   ``python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db train 1 2 3 4 5 6``   
+       python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db train 1 2 3 4 5 6
 
 Doing everything from scratch.
 ------------------------------
