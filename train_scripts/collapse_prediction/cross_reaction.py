@@ -74,16 +74,12 @@ def train(db, reaction, table, reverse):
         row = [bb.replace('_', ' '), lk.replace('_', ' '), *nums]
         print(' & '.join(row) + r' \\')
     else:
-        print('accuracy', f'{accuracy:.2f}', sep='\n', end='\n\n')
-        print('precision',
-              f'{p0:.2f}\t{p1:.2f}',
-              sep='\n',
-              end='\n\n')
-        print('recall',
-              f'{r0:.2f}\t{r1:.2f}',
-              sep='\n',
-              end='\n\n')
-        print('\n')
+        print(f'accuracy: {accuracy:.2f}')
+        print(f'precision (shape persistent): {p0:.2f}')
+        print(f'recall (shape persistent): {r0:.2f}')
+        print(f'precision (collapsed): {p1:.2f}')
+        print(f'precision (shape persistent): {p0:.2f}')
+        print('\n\n')
 
 
 def main():

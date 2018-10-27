@@ -39,7 +39,7 @@ shown in the paper, go through the following steps:
    numbers you can see the results for different rows of Table 2. To
    see which number corresponds to which reaction or topology run::
 
-       python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db --help
+       python train_scripts/collapse_prediction/random_forest.py --help
 
    The script ``collapse_prediction/random_forest.py`` is also used to
    calculate the results for the cross-topology model with::
@@ -54,7 +54,7 @@ shown in the paper, go through the following steps:
 
    and for Table 4::
 
-       python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db train 1 2 3 4 5 6
+       python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db test 1 2 3 4 5 6
 
 Doing everything from scratch.
 ------------------------------
