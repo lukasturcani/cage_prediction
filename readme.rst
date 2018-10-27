@@ -16,7 +16,7 @@ shown in the paper, go through the following steps:
 2. Extract the downloaded archive, ``cages.tar.gz``. For example,
    using ``tar -xzf cages.tar.gz``. This will extract the ``cages``
    folder, which holds the ``.json`` files and the SQL database.
-3. Train the desired models. Please note that every training script has
+3. Train the desired models. Note that every training script has
    a usage statement which can be seen by running::
 
        python path_to_train_script.py --help
@@ -29,56 +29,68 @@ shown in the paper, go through the following steps:
    should be replaced by the path to the file ``cage_prediction.db``
    on your computer.
 
-   The script ``collapse_prediction/random_forest.py`` can be used to
-   regenerate the results from Table 2 in the paper::
+``collapse_prediction/random_forest.py``
+----------------------------------------
 
-       python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db -r 1 2 3 4 5 6 -t 1
+The script ``collapse_prediction/random_forest.py`` can be used to
+regenerate the results from Table 2 in the paper::
 
-   The numbers after ``-r`` and ``-t`` indicate which reactions and
-   topologies you wish to see the results for. By adding or removing
-   numbers you can see the results for different rows of Table 2. To
-   see which number corresponds to which reaction or topology run::
+   python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db -r 1 2 3 4 5 6 -t 1
 
-       python train_scripts/collapse_prediction/random_forest.py --help
+The numbers after ``-r`` and ``-t`` indicate which reactions and
+topologies you wish to see the results for. By adding or removing
+numbers you can see the results for different rows of Table 2. To
+see which number corresponds to which reaction or topology run::
 
-   The script ``collapse_prediction/random_forest.py`` is also used to
-   calculate the results for the cross-topology model with::
+   python train_scripts/collapse_prediction/random_forest.py --help
 
-       python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db -r 1 2 8 9 10 11 12 -t 1 2 3 4 5 --join
+The script ``collapse_prediction/random_forest.py`` is also used to
+calculate the results for the cross-topology model with::
 
-   The script ``collapse_prediction/cross_reaction.py`` is used to
-   get the results shown in Tables 3 and 4. To get the results for
-   Table 3::
+   python train_scripts/collapse_prediction/random_forest.py path/to/cage_prediction.db -r 1 2 8 9 10 11 12 -t 1 2 3 4 5 --join
 
-       python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db train 1 2 3 4 5 6
+``collapse_prediction/cross_reaction.py``
+-----------------------------------------
 
-   and for Table 4::
+The script ``collapse_prediction/cross_reaction.py`` is used to
+get the results shown in Tables 3 and 4. To get the results for
+Table 3::
 
-       python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db test 1 2 3 4 5 6
+   python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db train 1 2 3 4 5 6
 
-   The script ``regression/results_table.py`` can be used to make
-   Table 5 and 6 and Table 2 in the SI. For example::
+and for Table 4::
 
-       python train_scripts/regression/results_table.py path/to/cage_prediction.db cage_property
+   python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db test 1 2 3 4 5 6
 
-   where ``cage_property`` can be either ``window_diff``, ``window_std``
-   or ``cavity_size``.
+``regression/results_table.py``
+-------------------------------
 
-   Note that this script prints the
-   results in a Latex syntax. The scripts ``regression/random_forest.py``
-   and ``regression/cross_reaction.py`` can be used to get the results for
-   individual rows of the the tables::
+The script ``regression/results_table.py`` can be used to make
+Table 5 and 6 and Table 2 in the SI. For example::
 
-       python train_scripts/regression/random_forest.py path/to/cage_prediction.db cage_property -r 1 2 3 -t 1
-       python train_scripts/regression/random_forest.py path/to/cage_prediction.db cage_property 1 2 3 4 5
+   python train_scripts/regression/results_table.py path/to/cage_prediction.db cage_property
 
-   Note that these scripts are run exactly like the ``collapse_prediction/random_forest.py`` and
-   ``collapse_prediction/cross_reaction.py`` with the exception that
-   ``window_diff``, ``window_std`` or ``cavity_size`` must be specified
-   after ``path/to/cage_prediction.db``. For example, to get the
-   results of the cross-topology model for cavity sizes::
+where ``cage_property`` can be either ``window_diff``, ``window_std``
+or ``cavity_size``.
 
-       python train_scripts/regression/random_forest.py path/to/cage_prediction.db cavity_size -r 1 2 8 9 10 11 12 -t 1 2 3 4 5 --join
+``regression/random_forest.py`` and ``regression/cross_reaction.py``
+--------------------------------------------------------------------
+
+Note that this script prints the
+results in a Latex syntax. The scripts ``regression/random_forest.py``
+and ``regression/cross_reaction.py`` can be used to get the results for
+individual rows of the the tables::
+
+   python train_scripts/regression/random_forest.py path/to/cage_prediction.db cage_property -r 1 2 3 -t 1
+   python train_scripts/regression/random_forest.py path/to/cage_prediction.db cage_property 1 2 3 4 5
+
+Note that these scripts are run exactly like the ``collapse_prediction/random_forest.py`` and
+``collapse_prediction/cross_reaction.py`` with the exception that
+``window_diff``, ``window_std`` or ``cavity_size`` must be specified
+after ``path/to/cage_prediction.db``. For example, to get the
+results of the cross-topology model for cavity sizes::
+
+   python train_scripts/regression/random_forest.py path/to/cage_prediction.db cavity_size -r 1 2 8 9 10 11 12 -t 1 2 3 4 5 --join
 
 
 Doing everything from scratch.
