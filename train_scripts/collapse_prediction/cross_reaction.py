@@ -79,7 +79,7 @@ def train(db, reaction, table, reverse):
         print(f'precision (shape persistent): {p0:.2f}')
         print(f'recall (shape persistent): {r0:.2f}')
         print(f'precision (collapsed): {p1:.2f}')
-        print(f'precision (shape persistent): {p1:.2f}')
+        print(f'precision (collapsed): {r1:.2f}')
         print('\n\n')
 
 
