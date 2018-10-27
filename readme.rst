@@ -71,15 +71,15 @@ Table 5 and 6 and Table 2 in the SI. For example::
    python train_scripts/regression/results_table.py path/to/cage_prediction.db cage_property
 
 where ``cage_property`` can be either ``window_diff``, ``window_std``
-or ``cavity_size``.
+or ``cavity_size``. Note that this script prints the
+results in a Latex syntax.
 
 ``regression/random_forest.py`` and ``regression/cross_reaction.py``
 --------------------------------------------------------------------
 
-Note that this script prints the
-results in a Latex syntax. The scripts ``regression/random_forest.py``
+The scripts ``regression/random_forest.py``
 and ``regression/cross_reaction.py`` can be used to get the results for
-individual rows of the the tables::
+individual rows of Tables 5, 6 and Table 2 in the SI::
 
    python train_scripts/regression/random_forest.py path/to/cage_prediction.db cage_property -r 1 2 3 -t 1
    python train_scripts/regression/random_forest.py path/to/cage_prediction.db cage_property 1 2 3 4 5
