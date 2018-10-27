@@ -82,36 +82,15 @@ shown in the paper, go through the following steps:
 
 
 Doing everything from scratch.
-------------------------------
+==============================
 
 We provide the SQL database and optimized cage structures used in the
 paper in https://doi.org/10.14469/hpc/4618. However, if you wish to
 regenerate the results, starting only from the SMILES of the building
 blocks and linkers, go through the following steps:
 
-1. Generate the structures of the building blocks and linkers.
-2. Assemble the unoptimized cages using ``stk``.
-3. Optimize the structures of the cages, requires a MACROMODEL license.
-4. Store the cage properties in a SQL database.
-
-
-3. OPTIONAL: The SQL database can be remade by running
-   ``./make_database.bash dirpath``, where ``dirpath`` is the path
-   to the ``cages`` folder extracted from ``cages.tar.gz``. Before
-   the database can be recalculated, you have to install ``stk`` and
-   ``rdkit``. Installation of these two libraries is only necessary if
-   you wish to regenerate the SQL database, it is not necessary to
-   train any of the machine learning models. To install these libraries
-   see: `Installing rdkit and stk`_.
-
-
 Installing rdkit and stk.
 -------------------------
-
-Note that this is only necessary if you are recalculating the cage
-properties. A SQL database holding the calculated cage properties
-can be downloaded from https://doi.org/10.14469/hpc/4618 and is
-held in the file ``cage_prediction.db``.
 
 Make sure you are using the Anaconda distribution of Python. This
 is necessary because ``stk`` depends on ``rdkit``, which requires the
@@ -124,6 +103,52 @@ terminal:
 
 1. ``conda install -c rdkit rdkit``
 2. ``pip install stk``
+
+Generating the SQL database.
+----------------------------
+
+To generate the database from the SMILES strings go through the
+follow steps 1 to 4. If you want to skip remaking the cage molecules
+and re-optimizing them, you can downloaded the ``.json`` holding the
+optimized cages from https://doi.org/10.14469/hpc/4618 and go straight
+to step 4. This will use the optimized cages and recalculate their
+properties.
+
+
+1. Generate the structures of the building blocks and linkers::
+
+       python create_structs.py
+
+2. Assemble the unoptimized cages using ``stk``::
+
+       python assemble.py 1 2 3 5 6 7 8 11 18 19 26 27 
+
+3. Optimize the structures of the cages, requires a MACROMODEL license.
+   The repository https://github.com/lukasturcani/chem_tools
+   has a script called ``optimize.py``, which can easily optimize
+   molecules in a ``stk`` population file. This can make the optimization
+   step significantly easier. Note that this step can take multiple
+   days. For example,  to optimize the structures of the cages with
+   in the ``amine2aldehyde3.json`` file with ``optimize.py``::
+
+       python optimize.py amine2amine2aldehyde3.json settings.py amine2aldehyde3_opt.json /opt/schrodinger2017-4
+
+   Run::
+
+       python optimize.py --help
+
+   for an explanation of the command line arguments. It may also help
+   to read the docstring within the file.
+
+4. Store the cage properties in a SQL database. The SQL database can be
+   remade by running::
+       ./make_database.bash dirpath
+
+   where ``dirpath`` is the path
+   to the ``cages`` folder extracted from ``cages.tar.gz``, which is
+   downloaded from https://doi.org/10.14469/hpc/4618.
+   ``make_database.bash`` if found in the ``database`` folder of this
+   repository.
 
 Files
 =====
@@ -138,7 +163,3 @@ forest models for cage property prediction. ``trained_models`` contains
 pickled scikit-learn random forest estimators which have been trained.
 These are the models which the website, https://ismycageporous.ngrok.io, uses.
 The ``website`` folder contains the code to make the aforementioned website.
-
-:database/make_database.bash:
-:database/make_database.py:
-:
