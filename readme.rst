@@ -7,16 +7,11 @@ This repo contains the code used for the paper "Machine Learning for
 Organic Cage Property Prediction". In order to replicate the results
 shown in the paper, go through the following steps:
 
-1. Download the database of organic cages from
-   https://doi.org/10.14469/hpc/4618. The cages are divided among
-   multiple ``stk`` ``.json`` population dump files, one
-   for each reaction. In addition, the SQL database used to
-   get the results shown in the paper is stored in
-   ``cage_prediction.db``.
-2. Extract the downloaded archive, ``cages.tar.gz``. For example,
-   using ``tar -xzf cages.tar.gz``. This will extract the ``cages``
-   folder, which holds the ``.json`` files and the SQL database.
-3. Train the desired models. Note that every training script has
+1. Download the file ``cage_prediction.db`` from
+   https://doi.org/10.14469/hpc/4618. This is a SQL database holding
+   the cage properties which are modelled in the paper.
+2. Train the desired models using the files in ``train_scripts``.
+   Note that every training script has
    a usage statement which can be seen by running::
 
        python path_to_train_script.py --help
@@ -121,7 +116,7 @@ Generating the SQL database.
 
 To generate the database from the SMILES strings go through the
 follow steps 1 to 4. If you want to skip remaking the cage molecules
-and re-optimizing them, you can downloaded the ``.json`` holding the
+and re-optimizing them, you can download the ``.json`` holding the
 optimized cages from https://doi.org/10.14469/hpc/4618 and go straight
 to step 4. This will use the optimized cages and recalculate their
 properties.
