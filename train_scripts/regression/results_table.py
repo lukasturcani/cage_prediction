@@ -5,7 +5,7 @@ Makes a tex table of results suitable for pasting into the paper.
 
 import logging
 from random_forest import train
-from rf_cr import train as cr_train
+from cross_reaction import train as cr_train
 import argparse
 import sqlite3
 import re
