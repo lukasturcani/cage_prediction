@@ -56,6 +56,31 @@ shown in the paper, go through the following steps:
 
        python train_scripts/collapse_prediction/cross_reaction.py path/to/cage_prediction.db test 1 2 3 4 5 6
 
+   The script ``regression/results_table.py`` can be used to make
+   Table 5 and 6 and Table 2 in the SI. For example::
+
+       python train_scripts/regression/results_table.py path/to/cage_prediction.db cage_property
+
+   where ``cage_property`` can be either ``window_diff``, ``window_std``
+   or ``cavity_size``.
+
+   Note that this script prints the
+   results in a Latex syntax. The scripts ``regression/random_forest.py``
+   and ``regression/cross_reaction.py`` can be used to get the results for
+   individual rows of the the tables::
+
+       python train_scripts/regression/random_forest.py path/to/cage_prediction.db cage_property -r 1 2 3 -t 1
+       python train_scripts/regression/random_forest.py path/to/cage_prediction.db cage_property 1 2 3 4 5
+
+   Note that these scripts are run exactly like the ``collapse_prediction/random_forest.py`` and
+   ``collapse_prediction/cross_reaction.py`` with the exception that
+   ``window_diff``, ``window_std`` or ``cavity_size`` must be specified
+   after ``path/to/cage_prediction.db``. For example, to get the
+   results of the cross-topology model for cavity sizes::
+
+       python train_scripts/regression/random_forest.py path/to/cage_prediction.db cavity_size -r 1 2 8 9 10 11 12 -t 1 2 3 4 5 --join
+
+
 Doing everything from scratch.
 ------------------------------
 
