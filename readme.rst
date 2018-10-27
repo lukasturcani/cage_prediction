@@ -11,7 +11,7 @@ shown in the paper, go through the following steps:
    https://doi.org/10.14469/hpc/4618. The cages are divided among
    multiple ``stk`` ``.json`` population dump files, one
    for each reaction. In addition, the SQL database used to
-   get the results show in the paper is stored in
+   get the results shown in the paper is stored in
    ``cage_prediction.db``.
 2. Extract the downloaded archive, ``cages.tar.gz``. For example,
    using ``tar -xzf cages.tar.gz``. This will extract the ``cages``
@@ -121,7 +121,7 @@ properties.
 
 2. Assemble the unoptimized cages using ``stk``::
 
-       python assemble.py 1 2 3 5 6 7 8 11 18 19 26 27 
+       python assemble.py 1 2 3 5 6 7 8 11 18 19 26 27
 
 3. Optimize the structures of the cages, requires a MACROMODEL license.
    The repository https://github.com/lukasturcani/chem_tools
