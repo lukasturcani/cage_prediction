@@ -71,10 +71,6 @@ def window_difference(windows):
 
 def make_entry(cage):
     try:
-        cage.set_position([0, 0, 0])
-        cs = cavity_size(cage)
-        md, *_ = cage.max_diameter()
-
         windows = cage.windows()
         if windows is None:
             wd = window_std = None
@@ -85,6 +81,9 @@ def make_entry(cage):
             window_std = (np.std(w) if
                           len(w) == cage.topology.n_windows else None)
 
+        cage.set_position([0, 0, 0])
+        cs = cavity_size(cage)
+        md, *_ = cage.max_diameter()
         return (cage.name,
                 cage.note,
                 cage.topology.__class__.__name__,
