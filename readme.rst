@@ -96,6 +96,17 @@ paper in https://doi.org/10.14469/hpc/4618. However, if you wish to
 regenerate the results, starting only from the SMILES of the building
 blocks and linkers, go through the following steps:
 
+For complete reporduciblity, use the fork of pywindow from
+
+https://github.com/lukasturcani/pywindow
+
+commit hash: ``1625d1111e1e0ae0e61964794f726af8a2154eee``
+
+and stk commit hash: ``292a13e4c6278e49988bac4bb2c0175bd1321d04``.
+
+Although for best results, using the most up-to-date versions of the
+libraries is reccomended.
+
 Installing rdkit and stk.
 -------------------------
 
