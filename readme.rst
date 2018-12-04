@@ -8,7 +8,7 @@
     I noticed that even switching to a different version of Python 3.6,
     such as 3.6.6, introduced some very slight, and completely negligible,
     differences in some of the numbers reported in the paper.
-    While this should be of no consequence, it is pretty annoying
+    While this should be of no consequence, it is pretty annoying.
 
 Introduction
 ============
