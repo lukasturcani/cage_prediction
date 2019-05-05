@@ -11,7 +11,7 @@ import multiprocessing as mp
 from collections import defaultdict
 
 
-stk.CACHE_SETTINGS['ON'] = False
+stk.OPTIONS['cache'] = False
 
 
 def read_smiles(file):
@@ -51,8 +51,7 @@ def make_mol(ismiles, fg_name, fg):
         mol.AddConformer(conf)
         update_stereochemistry(mol)
 
-        nfgs = len(stk.StructUnit.rdkit_init(mol, fg_name)
-                   .functional_group_atoms())
+        nfgs = len(stk.StructUnit(mol, [fg_name]).func_groups)
         dirname = f'{fg_name}{nfgs}'
 
         return ismiles, smiles, mol, dirname
